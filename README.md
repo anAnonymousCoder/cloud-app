@@ -16,9 +16,8 @@ SpringCloud测试项目
 
 #### 使用说明
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+1.  Ctrl+C
+2.  Ctrl+V
 
 #### 参与贡献
 
