@@ -48,6 +48,9 @@ out/
 .idea
 *.iml
 *.ipr
+**/mvnw
+**/mvnw.cmd
+**/.mvn
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/
