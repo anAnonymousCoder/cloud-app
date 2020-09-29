@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- 项目信息 !-->
+    <groupId>com.wqy.cloud</groupId>
+    <artifactId>cloud-app</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0.0</version>
+
+    <!-- 指定父项目坐标，所有项目都是SpringBoot项目 !-->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.4.RELEASE</version>
+    </parent>
+
+    <!-- properties标签中的属性可以被子项目继承，举例：以${wqy.cloud-app.common}的形式获取1.0.0 !-->
+    <properties>
+        <java.version>1.8</java.version>
+        <spring-cloud.version>Hoxton.SR8</spring-cloud.version>
+        <wqy.cloud-app.common>1.0.0</wqy.cloud-app.common>
+    </properties>
+
+    <!-- 为了保持模块间依赖的统一，使用dependencyManagement预定义所有子模块需要用到的依赖。!-->
+    <!-- dependencyManagement只会影响现有依赖的配置，但不会引入依赖。即子模块并不会继承父模块中
+         dependencyManagement所有预定义的依赖，而是只引入自身需要的依赖即可，即“各取所需”，
+         子模块引入依赖时只需要指定groupId、artifactId即可，无需指定版本号。!-->
+    <dependencyManagement>
+        <dependencies>
+        </dependencies>
+    </dependencyManagement>
+
+    <!-- 通过profiles标签每个模块可以读取不同的配置 !-->
+    <!-- 也可以在bootstrap.yml中指定 !-->
+    <profiles>
+        <profile>
+            <id>eureka</id>
+            <modules>
+                <module>
+                    eureka-server
+                </module>
+            </modules>
+        </profile>
+    </profiles>
+
+</project>

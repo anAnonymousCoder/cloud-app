@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: eureka-server
+
+# 激活配置文件application-dev.yml
+  profiles:
+    active: dev
