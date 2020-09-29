@@ -18,7 +18,6 @@ SpringCloud测试项目
 
 1.  Ctrl+C
 2.  Ctrl+V
-3.  改改
 
 #### 参与贡献
 
