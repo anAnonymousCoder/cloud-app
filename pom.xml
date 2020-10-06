@@ -44,6 +44,14 @@
                 </module>
             </modules>
         </profile>
+        <profile>
+            <id>service</id>
+            <modules>
+                <module>
+                    cloud-service
+                </module>
+            </modules>
+        </profile>
     </profiles>
 
 </project>
