@@ -5,3 +5,6 @@ spring:
   # 激活配置文件application-dev.yml
   profiles:
     active: dev
+  cloud:
+    config:
+      name: cloud-service

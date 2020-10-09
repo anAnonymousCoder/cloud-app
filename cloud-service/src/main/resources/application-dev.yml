@@ -1,10 +1,33 @@
 server:
   port: 9001
+  tomcat:
+    threads:
+      max: 200
+      min-spare: 10
+    max-connections: 2000
+    accept-count: 2000
+  servlet:
+    context-path: /cloud-service
 
 eureka:
   client:
     service-url:
-      defaultZone: http://127.0.0.1:8000/eureka/
+      defaultZone: http://127.0.0.1:9000/eureka/
   instance:
     prefer-ip-address: true
     appname: cloud-service
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    url: jdbc:mysql://rm-bp1031041v500d8xy2o.mysql.rds.aliyuncs.com:3306/test?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false
+    username: wqy_admin
+    password: 199873@Wqy
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    database: mysql
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
