@@ -11,7 +11,6 @@ import java.util.List;
  * 对BaseRepository进一步封装，抽离出需要的方法，不需要全部实现
  * @param <T>
  * @param <ID>
- * @param <R>
  * @author wqy
  * @version 1.0 2020/10/9
  *

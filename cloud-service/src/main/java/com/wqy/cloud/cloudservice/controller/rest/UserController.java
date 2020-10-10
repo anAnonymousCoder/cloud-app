@@ -14,25 +14,40 @@ import org.springframework.web.bind.annotation.*;
  */
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/user/rest")
 public class UserController {
 
     @Autowired
     private UserService userService;
 
-    @GetMapping("/hello")
-    public String sayHello() {
-        return "hello";
-    }
-
+    /**
+     * 新增用户
+     * @param user
+     * @return
+     */
     @PostMapping(value = "/create", consumes = {"application/json"})
     public User createUser(@RequestBody User user) {
         return userService.saveUser(user);
     }
 
-    @GetMapping("/{id}/find")
+    /**
+     * 通过id查找用户
+     * @param id
+     * @return
+     */
+    @GetMapping("/{id}")
     public User findById(@PathVariable(name = "id") String id) {
         return userService.findUserById(id);
+    }
+
+    /**
+     * 通过name查找用户
+     * @param name
+     * @return
+     */
+    @PostMapping("/{name}")
+    public User findByName(@PathVariable(name = "name") String name) {
+        return userService.findUserByName(name);
     }
 
 }

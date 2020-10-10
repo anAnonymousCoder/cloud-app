@@ -35,7 +35,7 @@ public class User extends BaseEntity {
         this.number = number;
     }
 
-    @Column(name = "name", nullable = false, length = 16)
+    @Column(name = "name", nullable = false, unique = true, length = 16)
     public String getName() {
         return name;
     }

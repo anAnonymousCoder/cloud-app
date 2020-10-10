@@ -10,4 +10,7 @@ import com.wqy.cloud.cloudservice.model.entity.User;
  *
  */
 public interface UserRepository<U extends User> extends BaseRepository<U, String> {
+
+    U findByName(String name);
+
 }

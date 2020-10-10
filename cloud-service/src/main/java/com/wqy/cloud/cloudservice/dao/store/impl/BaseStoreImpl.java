@@ -2,34 +2,26 @@ package com.wqy.cloud.cloudservice.dao.store.impl;
 
 import com.wqy.cloud.cloudservice.dao.repository.BaseRepository;
 import com.wqy.cloud.cloudservice.dao.store.RepositoryStore;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * 基础dao层
+ * 基础Repository实现类
  * @param <T>
  * @param <ID>
  * @param <R>
  * @author wqy
  * @version 1.0 2020/10/9
+ *
  */
 public abstract class BaseStoreImpl<T, ID, R extends BaseRepository<T, ID>> implements RepositoryStore<T, ID, R> {
 
-    @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
-    @Autowired
+    @Resource
     protected R repo;
-
-    public R getRepo(){
-        return repo;
-    }
-
-    public void setRepo(R repo) {
-        this.repo = repo;
-    }
 
     @Override
     public T findById(ID id) {
