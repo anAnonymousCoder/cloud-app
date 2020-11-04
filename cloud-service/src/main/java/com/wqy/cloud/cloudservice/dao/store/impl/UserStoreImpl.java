@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 /**
  * User的Repository实现
+ *
  * @author wqy
  * @version 1.0 2020/10/9
  */

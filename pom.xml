@@ -30,6 +30,20 @@
          子模块引入依赖时只需要指定groupId、artifactId即可，无需指定版本号。!-->
     <dependencyManagement>
         <dependencies>
+            <!-- lombok !-->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>1.18.2</version>
+            </dependency>
+            <!-- 继承了spring-cloud-dependencies-Hoxton.SR8.pom !-->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

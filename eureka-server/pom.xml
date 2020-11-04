@@ -35,19 +35,6 @@
         </dependency>
     </dependencies>
 
-    <!-- 从父项目继承了配置后，还需要从第三方pom中导入dependency配置，实现多继承 !-->
-    <dependencyManagement>
-        <dependencies>
-            <!-- 继承了spring-cloud-dependencies-Hoxton.SR8.pom !-->
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring-cloud.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 
     <build>
         <!-- 指定构建过程需要的资源文件 !-->

@@ -11,12 +11,12 @@ import java.util.List;
 
 /**
  * 基础Repository实现类
+ *
  * @param <T>
  * @param <ID>
  * @param <R>
  * @author wqy
  * @version 1.0 2020/10/9
- *
  */
 public abstract class BaseStoreImpl<T, ID, R extends BaseRepository<T, ID>> implements RepositoryStore<T, ID, R> {
 

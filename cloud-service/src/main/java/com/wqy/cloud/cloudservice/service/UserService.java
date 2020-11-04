@@ -4,6 +4,7 @@ import com.wqy.cloud.cloudservice.model.entity.User;
 
 /**
  * UserService接口
+ *
  * @author wqy
  * @version 1.0 2020/10/9
  */

@@ -11,9 +11,9 @@ import java.util.Date;
 
 /**
  * 基础实体类，封装公用的id和时间戳等属性
+ *
  * @author wqy
  * @version 1.0 2020/10/9
- *
  */
 
 @MappedSuperclass//表明这是一个实体父类

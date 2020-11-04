@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.*;
 
 /**
  * 用来将json/xml数据发送到前台页面，而不是返回视图页面
+ *
  * @author wqy
  * @version 1.0 2020/10/9
- *
  */
 
 @RestController
@@ -22,6 +22,7 @@ public class UserController {
 
     /**
      * 新增用户
+     *
      * @param user
      * @return
      */
@@ -32,6 +33,7 @@ public class UserController {
 
     /**
      * 通过id查找用户
+     *
      * @param id
      * @return
      */
@@ -42,6 +44,7 @@ public class UserController {
 
     /**
      * 通过name查找用户
+     *
      * @param name
      * @return
      */

@@ -6,6 +6,7 @@ import javax.persistence.Table;
 
 /**
  * 测试用用户实体类
+ *
  * @author wqy
  * @version 1.0 2020/10/9
  */
