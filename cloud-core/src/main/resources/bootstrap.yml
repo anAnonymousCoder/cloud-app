@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: cloud-core
+    version: 1.0
+
+  # 激活配置文件application-dev.yml
+  profiles:
+    active: dev
+  cloud:
+    config:
+      name: cloud-core
+
+# logback日志配置
+logging:
+  file:
+    path: D:/Documents/logs/cloudApplication

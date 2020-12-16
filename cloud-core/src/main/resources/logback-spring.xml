@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 每隔60s扫描配置文件是否发生变化 !-->
+<configuration scan="true" scanPeriod="60 seconds">
+    <!--
+    指定输出格式
+    %d{}: 表示时间
+    %thread: 请求记录所在的线程名
+    %-5level：用5位显示请求级别
+    %logger{36}：输出logger名，{36}表示logger名最大占用的字符位数，{0}表示最简短logger名（不包含包名）。
+    -->
+    <property name="log.console.pattern"
+              value="%red(%d{yyyy-MM-dd HH:mm:ss.SSS}) %green([%thread]) %highlight(%-5level) -- %cyan(%logger{36}) : %msg%n"/>
+    <property name="log.file.pattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"/>
+    <!-- 指定日志文件的位置，从yml文件中读取配置 !-->
+    <springProperty scope="context" name="log.filePath" source="logging.file.path"/>
+    <!-- 归档日志文件最大数量 !-->
+    <property name="log.maxHistory" value="30"/>
+    <!-- 控制所有归档日志文件的总大小 -->
+    <property name="totalSizeCap" value="512MB"/>
+
+    <!-- 日志输出到控制台 !-->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${log.console.pattern}</pattern>
+        </encoder>
+    </appender>
+    <!-- 日志级别>=DEBUG的在控制台输出 !-->
+    <!-- TRACE < DEBUG < INFO < WARN < ERROR !-->
+    <root level="DEBUG">　　　　　　
+        <appender-ref ref="STDOUT"/>
+    </root>
+
+    <!-- 日志输出到文件，按照特定条件滚动 !-->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!--
+        以2020-11-11为例，如果你设置了file属性，当天你只能看到app.log日志文件，
+        2020-11-12才会看到app.2020-11-11.log文件。
+        但是如果你忽略了，你当天就能看到app.2020-11-11.log文件，
+        但你始终看不到app.log文件
+        !-->
+        <file>${log.filePath}/app.log</file>
+        <!-- 日志回滚策略 !-->
+        <rollingPolicy
+                class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>
+                ${log.filePath}/app.%d{yyyy-MM-dd}.%i.log
+            </fileNamePattern>
+            <!-- 日志文件大小，超出进行归档 !-->
+            <maxFileSize>8MB</maxFileSize>
+            <!-- 日志文件最大归档数量 !-->
+            <maxHistory>${log.maxHistory}</maxHistory>
+            <totalSizeCap>${totalSizeCap}</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${log.file.pattern}</pattern>
+        </encoder>
+    </appender>
+    <!-- 日志级别>=INFO的输出到文件 !-->
+    <root level="INFO">　　　　　　
+        <appender-ref ref="FILE"/>
+    </root>
+
+    <!--
+    用来设置某一个包或具体的某一个类的日志打印级别，
+    以及指定<appender>，<logger>仅有一个name属性，一个可选的level和
+    一个可选的additivity属性；
+    logger默认继承root中的appender，如果指定了appender，要设置additivity=false，
+    否则日志会输出两遍
+    !-->
+    <logger name="com.apache.ibatis" level="INFO" additivity="false">
+        <appender-ref ref="FILE"/>
+    </logger>
+    <logger name="java.sql.Connection" level="WARN" additivity="false">
+        <appender-ref ref="FILE"/>
+    </logger>
+    <logger name="java.sql.Statement" level="WARN" additivity="false">
+        <appender-ref ref="FILE"/>
+    </logger>
+    <logger name="java.sql.PreparedStatement" level="ERROR" additivity="false">
+        <appender-ref ref="FILE"/>
+    </logger>
+    <logger name="org.apache.catalina.startup.DigesterFactory" level="ERROR"/>
+    <logger name="org.apache.catalina.util.LifecycleBase" level="ERROR"/>
+    <logger name="org.apache.coyote.http11.Http11NioProtocol" level="WARN"/>
+    <logger name="org.apache.sshd.common.util.SecurityUtils" level="WARN"/>
+    <logger name="org.apache.tomcat.util.net.NioSelectorPool" level="WARN"/>
+    <logger name="org.eclipse.jetty.util.component.AbstractLifeCycle" level="ERROR"/>
+    <logger name="org.hibernate.validator.internal.util.Version" level="WARN"/>
+    <logger name="org.springframework.boot.actuate.endpoint.jmx" level="WARN"/>
+
+</configuration>

@@ -22,6 +22,7 @@
         <java.version>1.8</java.version>
         <spring-cloud.version>Hoxton.SR8</spring-cloud.version>
         <wqy.cloud-app.common>1.0.0</wqy.cloud-app.common>
+        <swagger.version>2.9.2</swagger.version>
     </properties>
 
     <!-- 为了保持模块间依赖的统一，使用dependencyManagement预定义所有子模块需要用到的依赖。!-->
@@ -44,6 +45,19 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
+            <!-- Swagger !-->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
@@ -59,10 +73,18 @@
             </modules>
         </profile>
         <profile>
-            <id>service</id>
+            <id>core</id>
             <modules>
                 <module>
-                    cloud-service
+                    cloud-core
+                </module>
+            </modules>
+        </profile>
+        <profile>
+            <id>common</id>
+            <modules>
+                <module>
+                    common
                 </module>
             </modules>
         </profile>
