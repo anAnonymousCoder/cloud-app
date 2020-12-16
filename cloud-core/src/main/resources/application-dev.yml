@@ -8,7 +8,7 @@ server:
     max-connections: 2000
     accept-count: 2000
   servlet:
-    context-path: /cloud-service
+    context-path: /
 # 注册中心配置
 eureka:
   client:
@@ -16,13 +16,16 @@ eureka:
       defaultZone: http://192.168.2.194:8000/eureka/
   instance:
     prefer-ip-address: true
-    appname: cloud-service
+    appname: cloud-core
 
 spring:
   main:
     allow-bean-definition-overriding: true
   # 数据源配置
   datasource:
+    url: jdbc:mysql://rm-bp1031041v500d8xy2o.mysql.rds.aliyuncs.com:3306/test?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false
+    username: wqy_admin
+    password: 199873@Wqy
     driver-class-name: com.mysql.cj.jdbc.Driver
     # hikari连接池配置
     hikari:
