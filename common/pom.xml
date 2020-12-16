@@ -11,7 +11,7 @@
 
     <artifactId>common</artifactId>
     <version>1.0.0</version>
-    <name>cloud-common</name>
+    <name>common</name>
     <description>Common Module</description>
 
 
